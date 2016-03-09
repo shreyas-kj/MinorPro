@@ -1,4 +1,11 @@
-
+/*
+Class used to depict genotype of each instances for GA.
+Roughly, it represents student's performance in each category and its overall performance in the form of tuples.
+The value of each attribute are stored in 4 bit string(implemented using boolean array).
+Since 4 attributes are used, therfore 16 bit string used to denote overall tuple's value
+This class also stores information on whether tuple belongs to training set and,
+also whether student's overall performance is at Risk or above Risk.
+*/
 package minorpro;
 import weka.core.*;
 
@@ -10,6 +17,7 @@ public class Individual
     boolean isTrain,atRisk;
     //static int len = 16;
     
+    //Initial constructor
     public Individual(Instance ins,int i,boolean it, Fitness fit)
     {
         val = BitsUtility.generate(ins);
@@ -24,21 +32,25 @@ public class Individual
         }        
     }
     
+    //Returns state of individual genes.
     public boolean getGene(int ind)
     {
         return val[ind];
     }
     
+    //Changes state of each gene
     public void setGene(int ind,boolean gval)
     {
         val[ind] = gval;
     }
     
+    //Returns if tuple belongs to training set
     public boolean isTrained()
     {
         return isTrain;
     }
     
+    //Returns if tuples belongs to atRisk
     public boolean isAtRisk()
     {
         if(!atRisk)
@@ -48,11 +60,13 @@ public class Individual
         return atRisk;
     }
     
+    //Returns tuples index number
     public int getIndex()
     {
         return index;
     }
     
+    //Determines if given chromosome haa attained required fitness 
     public boolean getFitness()
     {
         boolean isFit = true;

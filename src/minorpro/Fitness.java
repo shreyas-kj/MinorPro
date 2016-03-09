@@ -1,4 +1,5 @@
 
+// This class creates Fitness value for each individual.
 package minorpro;
 
 
