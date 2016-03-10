@@ -81,7 +81,7 @@ public class Individual
         }
         return isFit;
     }
-    
+     
     private int[] intVal(boolean[] a)
     {
         int[] v = new int[4];
