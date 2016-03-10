@@ -24,7 +24,7 @@ public class wknn
         for (distValue a1 : a) 
         {
             double val = (double)Math.round(a1.getValue() * 100000 )/ 100000;
-            System.out.print((a1.getIndex() + 1) + "," + val + "," + a1.getResult().charAt(0) + " | ");
+            System.out.print((a1.getIndex()) + "," + val + "," + a1.getResult().charAt(0) + " | ");
         }
     }
     
@@ -34,14 +34,14 @@ public class wknn
         distValue[] dv = new distValue[max];
         int test_tup = testset.numInstances();
         System.out.print("Testing/training by dist  ");
-        for(int i = 1; i <= max; i++)
+        for(int i = 0; i < max; i++)
         {
             System.out.print(i + "\t");
         }
         System.out.println();
         for(int i=0; i < test_tup; i++)
         {
-            int x = i + 1;
+            int x = i;
             System.out.print( x + " ");
             printDist(dv,i);
             System.out.println();
@@ -89,6 +89,18 @@ public class wknn
             return rng[size - 1];
         }
         return rng[0];
+    }
+    
+    public void prnMinMax()
+    {
+        int size = trainset.numAttributes() - 1;
+        for(int i = 0; i < size; i++)
+        {
+            double max = minOrMax(trainset,i,true);
+            double min = minOrMax(trainset,i,false);
+            System.out.println("Max: " + max + " Min: " + min);
+        }
+        
     }
     
     void assignDist(Instance test,distValue[] a)
@@ -158,6 +170,7 @@ public class wknn
                if(tset[i].getIndex() != index)
                {
                    near[num] = tset[i];
+                   num++;
                }
                i++;
            }

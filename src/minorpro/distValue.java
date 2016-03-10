@@ -53,4 +53,18 @@ public class distValue
     {
         return ins.stringValue(ins.numAttributes() - 1);
     }
+    
+    public void print()
+    {
+        System.out.print("Index: " + index + " ");
+        System.out.print("Value: " + val + " ");
+        System.out.print("Instances: ");
+        for(int i = 0; i < ins.numAttributes(); i++)
+        {
+            String a = ins.attribute(i).name();
+            System.out.print(a + " = " + ins.value(i) + " ");
+        }
+        System.out.println();
+        
+    }
 }
