@@ -48,16 +48,13 @@ public class wttest {
           {         
                      
             Instances trainset = getDataset("Select training set");                        
-            Instance ins = trainset.instance(12);
-            boolean[] val = BitsUtility.generate(ins);
-            int[] iVal = intVal(val);
-            for(int a : iVal)
+            Instances testset = getDataset("Select testing set");
+            wknn w = new wknn(trainset,testset,5);
+            distValue[] near = w.knnArray(4, true);
+            for(distValue n : near)
             {
-               System.out.print(a + " ");
+                n.print();
             }
-            System.out.println();
-            System.out.println("Bit string: " + BitsUtility.convertToBits(ins));
-            //fd.dispose();
            
           }
           catch(Exception ex)

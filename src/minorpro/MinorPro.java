@@ -35,7 +35,7 @@ public class MinorPro
            Instances trainset = getDataset("Select training set");
            Instances testset = getDataset("Select testing set");
            wknn test = new wknn(trainset,testset,5);
-           test.testAll();
+           test.printAll();
        }    
         catch(Exception ex)
         {
