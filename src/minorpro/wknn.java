@@ -55,14 +55,14 @@ public class wknn
         {
             double a = test.value(j);
             double b = train.value(j);
-            double di = Math.pow(a-b,2) * weight(a,b,j) ;
+            double di = Math.pow(a-b,2) * weight(a,j) ;
             sq = sq +  di ;
         }
         double ans = Math.sqrt(sq);
         return ans;
     }
     
-    double weight(double x,double y,int i)
+    double weight(double x,int i)
     {
         double max1 = minOrMax(trainset,i,true);
         double max2 = minOrMax(testset,i,true);
@@ -70,7 +70,7 @@ public class wknn
         double min2 = minOrMax(testset,i,false);
         double max = (max1 >= max2) ? max1 : max2 ;
         double min = (min1 <= min2) ? min1 : min2 ;
-        double wt = Math.abs((x-y)/(max - min));
+        double wt = Math.abs((x-min)/(max - min));
         return wt;
     }
     
